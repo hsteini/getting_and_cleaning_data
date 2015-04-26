@@ -1,8 +1,18 @@
+#---
+#title: "project"
+#output: html_document
+#---
+
+
+
+#```{r}
 library(dplyr)
+library(data.table)
 # 
 # First each column needs a readable name
 # in features.txt are the column names for X_test.txt and X_train.txt
-setwd("/Users/steinbichler/Desktop/Coursera/project/UC/")
+#setwd("/Users/steinbichler/Desktop/Coursera/project/UC/")
+
 file_list <- list.files( )
 file_list
 
@@ -34,7 +44,7 @@ bvector <- features[['V1']]
 
 ## for the test data files
 
-setwd("/Users/steinbichler/Desktop/Coursera/project/UC/test")
+#setwd("/Users/steinbichler/Desktop/Coursera/project/UC/test")
 subject_test <- read.table("subject_test.txt", sep="\t", header=FALSE)
 
 # in the file subject_test is one column named subject
@@ -68,7 +78,7 @@ all_test <- data.frame(y_test, subject_test, X_test)
 
 ## for the train data files
 
-setwd("/Users/steinbichler/Desktop/Coursera/project/UC/train")
+#setwd("/Users/steinbichler/Desktop/Coursera/project/UC/train")
 subject_train <- read.table("subject_train.txt", sep="\t", header=FALSE)
 
 # in the file subject_train is one column named subject
@@ -111,4 +121,26 @@ all <- rbind(all_train, all_test)
 head(all, n=3)
 dim(all)
 
-print("Hallo")
+
+## apply the names given in activity_labels.txt to the merged data from train + test
+names(all)
+all$al <-activity_labels_new$movement[match(all$activity_label,activity_labels_new$index)]
+tail(all, n=10)
+dim(all)
+
+all_tidy <- arrange(all, subject, al)
+head(all_tidy, n=20)
+
+#library(data.table)
+#f <- data.table(all_tidy)
+#f[, lapply(mean), by=c("subject", "al")]
+
+
+tolower(names(all))
+
+mean_deviation <- subset(all, select=grep("\\.mean\\.\\.", names(all)))
+std_deviation <- subset(all, select=grep("\\.std\\.\\.", names(all)))
+all_tidy <- data.frame(mean_deviation, std_deviation)
+dim(all_tidy)
+
+write.table(all_tidy, "tidy.txt", sep=" ")
