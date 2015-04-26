@@ -1,7 +1,7 @@
 # getting_and_cleaning_data
 project for the course geting and cleaning data
 
-## how does the script run_analysis.R work
+## how does the script run_analysis.Rmd work
 
 * all the needed files are in the working directory
 
