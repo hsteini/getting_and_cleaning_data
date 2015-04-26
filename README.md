@@ -41,7 +41,7 @@ project for the course geting and cleaning data
 
 * the "subject_test.txt" file is read and the data is assigned to the dataframe "subject_test"
 
-* the file "y_test.txt" is read and the data is assigned to "y_test" and afterwards the columname  "activity_label" is assigned to it
+* the file "y_test.txt" is read and the data is assigned to "y_test" and afterwards the columname  "activity_label" is assigned to it - Uses descriptive activity names to name the activities in the data set
 
 * the file "X_test.txt" is read and the data is assigned to "X_test"
 
@@ -53,3 +53,10 @@ project for the course geting and cleaning data
 
 * in the new dataframe "all" the dataframe "all_test" is attached to "all_train"
 
+* the "activity_labels_new" are assigned to all
+
+* all Variablenames  of "all" are changed to lower characters with the function tolower
+
+* all Variablenames with the pattern ".mean.." and ".std.." are filtered and stored in the dataframe "all_tidy"
+
+* the dataframe "all_tidy" is exported with write.table to a file named "tidy.txt" in the working directory
