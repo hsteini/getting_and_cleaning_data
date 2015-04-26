@@ -5,6 +5,8 @@ project for the course geting and cleaning data
 
 * all the needed files are in the working directory
 
+** run_analysis.Rmd
+
 ** activity_labels.txt
 
 ** features_info.txt
@@ -22,6 +24,8 @@ project for the course geting and cleaning data
 ** y_test.txt
 
 ** y_train.txt
+
+** code_book.md
 
 * the libraries "dplyr" and "data.table" are needed
 
